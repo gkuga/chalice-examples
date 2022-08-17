@@ -13,9 +13,41 @@ def hello():
     return {'hello': '/hello'}
 
 
+@app.route('/hello/{key}', methods=['GET', 'PUT'])
+def hello2(key):
+    request = app.current_request
+    if request.method == 'PUT':
+        # handle PUT request
+        pass
+    elif request.method == 'GET':
+        # handle GET request
+        pass
+    return {'key': key}
+
+
 @app.route('/goodbye')
 def goodbye():
     return {'goodbye': '/goodbye'}
+
+
+@app.route('/goodbye/a')
+def goodbye_a():
+    return {'goodbye': '/goodbye/a'}
+
+
+@app.route('/goodbye/a/1')
+def goodbye_a1():
+    return {'goodbye': '/goodbye/a'}
+
+
+@app.route('/goodbye/a/2')
+def goodbye_a2():
+    return {'goodbye': '/goodbye/a'}
+
+
+@app.route('/goodbye/b')
+def goodbye_b():
+    return {'goodbye': '/goodbye/b'}
 
 
 # The view function above will return {"hello": "world"}
